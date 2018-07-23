@@ -7,7 +7,7 @@ export interface StoreState {
   enthusiasmLevel: number;
 }
 
-const store = createStore<StoreState, any, any, any>(enthusiasm, {
+const store = createStore<StoreState, any, null, null>(enthusiasm, {
   enthusiasmLevel: 1,
   languageName: 'TypeScript'
 });
