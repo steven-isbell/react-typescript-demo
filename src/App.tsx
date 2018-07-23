@@ -1,20 +1,24 @@
 import * as React from 'react';
+import { Provider } from 'react-redux';
 
 import './App.css';
 import logo from './logo.svg';
+import store from './store';
 
-import Hello from './components/Hello/Hello';
+import HelloContainer from './components/HelloContainer/HelloContainer';
 
 class App extends React.Component {
   public render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <Hello name="Steven" enthusiasmLevel={5} />
-      </div>
+      <Provider store={store}>
+        <div className="App">
+          <header className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+            <h1 className="App-title">Welcome to React</h1>
+          </header>
+          <HelloContainer />
+        </div>
+      </Provider>
     );
   }
 }

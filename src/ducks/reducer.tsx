@@ -1,3 +1,5 @@
+import { StoreState } from '../store';
+
 const INCREMENT_ENTHUSIASM = 'INCREMENT_ENTHUSIASM';
 type INCREMENT_ENTHUSIASM = typeof INCREMENT_ENTHUSIASM;
 
@@ -24,4 +26,21 @@ export function decrementEnthusiasm(): DecrementEnthusiasm {
   return {
     type: DECREMENT_ENTHUSIASM
   };
+}
+
+export default function enthusiasm(
+  state: StoreState,
+  action: EnthusiasmAction
+): StoreState {
+  switch (action.type) {
+    case INCREMENT_ENTHUSIASM:
+      return { ...state, enthusiasmLevel: state.enthusiasmLevel + 1 };
+    case DECREMENT_ENTHUSIASM:
+      return {
+        ...state,
+        enthusiasmLevel: Math.max(1, state.enthusiasmLevel - 1)
+      };
+    default:
+      return state;
+  }
 }
